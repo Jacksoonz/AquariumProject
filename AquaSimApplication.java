@@ -33,13 +33,13 @@ public class AquaSimApplication
 
         // Construct fish and add them to the aquarium.
         //      Adding fish to aquarium
-        AquaFish dog = new AquaFish(aqua);
+        AquaFish dog = new AquaFish(aqua, Color.RED);
         aqua.add(dog);
         
-        AquaFish cat = new AquaFish(aqua);
+        AquaFish cat = new AquaFish(aqua, Color.BLUE);
         aqua.add(cat);
         
-        AquaFish kid = new AquaFish(aqua);
+        AquaFish kid = new AquaFish(aqua, Color.BLUE);
         aqua.add(kid);
         
         // Construct a graphical user interface (GUI) to display and control
@@ -67,7 +67,9 @@ public class AquaSimApplication
         dog.moveForward();
         cat.moveForward();
         kid.moveForward();
+        
         userInterface.showAquarium();
+        
         for ( ; ; )
         {
             if (dog.atWall())
