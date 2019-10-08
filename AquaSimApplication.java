@@ -63,15 +63,31 @@ public class AquaSimApplication
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
 
-        userInterface.showAquarium();
+
         dog.moveForward();
         cat.moveForward();
         kid.moveForward();
+        userInterface.showAquarium();
+        for ( ; ; )
+        {
+            if (dog.atWall())
+                dog.changeDir();
+            dog.moveForward();
+        
+            if (cat.atWall())
+                cat.changeDir();
+            cat.moveForward();
+        
+            if (kid.atWall())
+                kid.changeDir();
+            kid.moveForward();
+            
+            userInterface.showAquarium();
+        }
         
         // WRAP UP.
 
         // Remind user how to quit application.
-        userInterface.println ("Close GUI display window to quit.");
 
     }//end main
 
