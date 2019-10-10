@@ -21,29 +21,37 @@ public class AquaSimApplication
      *  This is the main function.  It executes the program.
      *  @param    String args[] is never used
      **/
+        private static Random generator;
     public static void main(String args[])
     {
         System.out.println("Sup. Start kid.");
 
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
-        Random generator = new Random();
-        //int randNum = generator.nextInt(10);
-        //randNum = generator.nextInt(10);
+        generator = new Random();;
+        
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua;                 // create reference to an Aquarium ...
         aqua = new Aquarium(2400, 1920); // ... object that has now been created
 
         // Construct fish and add them to the aquarium.
         //      Adding fish to aquarium
-        AquaFish dog = new AquaFish(aqua, Color.RED);
+        AquaFish dog = new AquaFish(aqua, getColor());
         aqua.add(dog);
         
-        AquaFish cat = new AquaFish(aqua, Color.BLUE);
+        AquaFish cat = new AquaFish(aqua, getColor());
         aqua.add(cat);
         
-        AquaFish kid = new AquaFish(aqua, Color.BLUE);
+        AquaFish kid = new AquaFish(aqua, getColor());
         aqua.add(kid);
         
+        AquaFish dude = new AquaFish(aqua, getColor());
+        aqua.add(dude);
+ 
+        AquaFish dued = new AquaFish(aqua, getColor());
+        aqua.add(dued);
+        
+        AquaFish bro = new AquaFish(aqua, getColor());
+        aqua.add(bro);
         // Construct a graphical user interface (GUI) to display and control
         // the simulation.  The user interface needs to know about the
         // aquarium, so we pass aqua to the user interface constructor.
@@ -69,10 +77,13 @@ public class AquaSimApplication
         dog.moveForward();
         cat.moveForward();
         kid.moveForward();
+        dude.moveForward();
+        dued.moveForward();
+        bro.moveForward();
         
         userInterface.showAquarium();
         
-        for ( ; ; )
+        for (int i=0 ; i<=9 ; i++)
         {
             if (dog.atWall())
                 dog.changeDir();
@@ -86,6 +97,18 @@ public class AquaSimApplication
                 kid.changeDir();
             kid.moveForward();
             
+            if (dude.atWall())
+                dude.changeDir();
+            dude.moveForward();
+            
+            if (dued.atWall())
+                dued.changeDir();
+            dued.moveForward();
+            
+            if (bro.atWall())
+                bro.changeDir();
+            bro.moveForward();
+            
             userInterface.showAquarium();
         }
         
@@ -94,5 +117,21 @@ public class AquaSimApplication
         // Remind user how to quit application.
 
     }//end main
-
+    public static Color getColor()
+    {
+        int randNum = generator.nextInt(6);
+        if (randNum == 0){
+            return Color.RED;
+        }else if (randNum == 1){
+            return Color.BLUE;
+        }else if (randNum == 2){
+            return Color.ORANGE;
+        }else if (randNum == 3){
+            return Color.YELLOW;
+        }else if (randNum == 4){
+            return Color.MAGENTA;
+        }else{
+            return Color.GREEN;
+        }
+    }
 }//end class
