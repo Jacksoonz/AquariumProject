@@ -27,7 +27,7 @@ public class AquaSimApplication
         System.out.println("Sup. Start kid.");
 
         // CONSTRUCT OBJECTS NEEDED FOR THE AQUARIUM SIMULATION.
-        generator = new Random();;
+        generator = new Random();
         
         // Construct the aquarium.  Specify its dimensions when creating it.
         Aquarium aqua;                 // create reference to an Aquarium ...
@@ -56,8 +56,8 @@ public class AquaSimApplication
         // the simulation.  The user interface needs to know about the
         // aquarium, so we pass aqua to the user interface constructor.
         AquaSimGUI userInterface;              // create reference to GUI ...
-        userInterface = new AquaSimGUI(aqua);  // ... and then GUI itself
-
+        userInterface = new AquaSimGUI(aqua, true);  // ... and then GUI itself
+        
         // Tell the user how to start the aquarium simulation.
         System.out.println("Click start. Hurry up.");
 
@@ -67,12 +67,10 @@ public class AquaSimApplication
         // Draw the initial view of the aquarium and its contents.
         userInterface.showAquarium();
 
-
         // RUN THE AQUARIUM SIMULATION.
 
         // Make the fish move and redisplay.
         //      CODE MISSING HERE!
-
 
         dog.moveForward();
         cat.moveForward();
@@ -83,7 +81,7 @@ public class AquaSimApplication
         
         userInterface.showAquarium();
         
-        for (int i=0 ; i<=9 ; i++)
+        for (int i=0 ; i<userInterface.getNumberOfSteps() ; i++)
         {
             if (dog.atWall())
                 dog.changeDir();
@@ -111,9 +109,8 @@ public class AquaSimApplication
             
             userInterface.showAquarium();
         }
-        
         // WRAP UP.
-
+        
         // Remind user how to quit application.
 
     }//end main
@@ -133,5 +130,13 @@ public class AquaSimApplication
         }else{
             return Color.GREEN;
         }
+    }
+    public static void getDir()
+    {
+        int newNum = generator.nextInt(4);
+        if (newNum == 0){
+            return changeDir();
+        }
+        
     }
 }//end class
